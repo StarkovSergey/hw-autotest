@@ -1,13 +1,32 @@
 .sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: -100%;
+  background-color: white;
+  height: 100vh;
+  width: 317px;
+  transition: 200ms left;
 }
 
 .sidebar.open {
+  left: 0;
 }
 
 .background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.3;
 }
 
 .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .nav a {
@@ -16,9 +35,17 @@
 .nav a:hover {
 }
 
-.nav a.active {
+.link {
+  color: black;
+}
+
+.link:global(.active) {
+  font-weight: 600;
+  color: darkolivegreen;
 }
 .close {
+  cursor: pointer;
+  align-self: end;
 }
 
 .close img {
