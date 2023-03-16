@@ -1,10 +1,12 @@
 .button {
+  background-color: mediumpurple;
 }
 
 .disabled {
 }
 
 .secondary {
+  background-color: olive;
 }
 
 .default {
