@@ -11,7 +11,9 @@ import s from './HW7.module.css'
 * 4 - сделать стили в соответствии с дизайном
 * */
 
-const arr = [
+export type Option = { id: number, value: string}
+
+const arr: Option[] = [
     { id: 1, value: 'x' },
     { id: 2, value: 'y' },
     { id: 3, value: 'z' },
@@ -19,10 +21,11 @@ const arr = [
 
 const HW7 = () => {
     const [value, onChangeOption] = useState(1) // селект и радио должны работать синхронно
+    console.log(value)
 
     return (
         <div id={'hw7'}>
-            <div className={s2.hwTitle}>Homework #7</div>
+            <h2 className={s2.hwTitle}>Homework #7</h2>
 
             {/*демонстрация возможностей компонент:*/}
             <div className={s2.hw}>
