@@ -24,6 +24,19 @@ function getDateInFormat(date: Date): string {
   return `${day}.${month}.${year}`
 }
 
+const formatter = new Intl.DateTimeFormat('en', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false
+})
+
+const dateFormatter = new Intl.DateTimeFormat('ru', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric'
+})
+
 function Clock() {
   const [timerId, setTimerId] = useState<number | undefined>(undefined)
   // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
@@ -53,8 +66,13 @@ function Clock() {
     setShow(false)
   }
 
-  const stringTime = getTimeIn24HourFormat(date) || <br /> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-  const stringDate = getDateInFormat(date) || <br /> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+  const stringTime = formatter.format(date)
+  const stringDate = dateFormatter.format(date)
+
+
+  // const stringTime = getTimeIn24HourFormat(date) || <br /> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
+  // const stringDate = getDateInFormat(date) || <br />
+  // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
   // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
   const stringDay = getDayOfWeek(date.getDay())
